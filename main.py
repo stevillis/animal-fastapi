@@ -17,4 +17,4 @@ def main():
     return """<a href="http://localhost:8000/docs">API instructions</a>"""
 
 
-app.include_router(animal_router, prefix='/animals', tags=['animals'])
+app.include_router(animal_router, prefix='/animais', tags=['animais'])
