@@ -29,7 +29,7 @@ class AnimalList:
         for animal in self.animal_list:
             if animal.id == animal_id:
                 return animal
-        return HTTPException(
+        raise HTTPException(
             status_code=404,
             detail=f'Animal with id {animal_id} does not exist'
         )
@@ -56,4 +56,9 @@ class AnimalList:
             animal.sex = animal_update.sex
         if animal_update.color is not None:
             animal.color = animal_update.color
+        return animal
+
+    def delete(self, animal_id: UUID) -> AnimalModel:
+        animal = self.__get_animal_by_id(animal_id)
+        self.animal_list.remove(animal)
         return animal

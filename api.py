@@ -28,3 +28,8 @@ async def create_animal(animal: AnimalModel):
 @animal_router.put('/{animal_id}')
 async def update_animal(animal_id: UUID, animal_update: AnimalUpdateModel):
     return animal_list.update(animal_id, animal_update)
+
+
+@animal_router.delete('/{animal_id}')
+async def remove_animal(animal_id: UUID):
+    return animal_list.delete(animal_id)
