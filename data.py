@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 from uuid import UUID, uuid4
 
 from fastapi import HTTPException
@@ -10,30 +10,30 @@ class AnimalList:
     animal_list: List[AnimalModel] = [
         AnimalModel(
             id=uuid4(),
-            name="Michael",
+            name="Totó",
             age=4,
             sex=SexEnum.male,
-            color="white"
+            color="branco"
         ),
         AnimalModel(
             id=uuid4(),
-            name="Bella",
+            name="Belinha",
             age=1,
             sex=SexEnum.female,
-            color="gray"
+            color="cinza"
         ),
     ]
 
-    def __get_animal_by_id(self, animal_id):
-        animal = filter(lambda x: x.id == animal_id, self.animal_list)
-        if animal:
-            return list(animal)[0]
+    def __get_animal_by_id(self, animal_id) -> Union[AnimalModel, HTTPException]:
+        for animal in self.animal_list:
+            if animal.id == animal_id:
+                return animal
         return HTTPException(
             status_code=404,
             detail=f'Animal with id {animal_id} does not exist'
         )
 
-    def list_all(self):
+    def list_all(self) -> List[AnimalModel]:
         return self.animal_list
 
     def get_animal(self, animal_id) -> AnimalModel:
