@@ -3,7 +3,7 @@ from uuid import UUID
 from fastapi import APIRouter
 
 from data import AnimalList
-from models import AnimalModel
+from models import AnimalModel, AnimalUpdateModel
 
 animal_list = AnimalList()
 
@@ -23,3 +23,8 @@ async def get_animal(animal_id: UUID):
 @animal_router.post('/')
 async def create_animal(animal: AnimalModel):
     return animal_list.insert(animal)
+
+
+@animal_router.put('/{animal_id}')
+async def update_animal(animal_id: UUID, animal_update: AnimalUpdateModel):
+    return animal_list.update(animal_id, animal_update)
