@@ -24,8 +24,8 @@ async def list_all():
 async def get_animal(animal_id: UUID) -> AnimalModel:
     """
     Get Animal by ID\n
-    :param animal_id: The ID of the Animal to be retrievied\n
-    :return: The Animal retrievied by ID
+    :param animal_id: The ID of the Animal to be retrieved\n
+    :return: The Animal retrieved by ID
     """
     return animal_list.get_animal(animal_id)
 

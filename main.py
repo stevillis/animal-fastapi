@@ -2,9 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 
 from api import animal_router
-from data import AnimalList
 
-animal_list = AnimalList()
 app = FastAPI()
 
 
