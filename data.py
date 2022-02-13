@@ -24,7 +24,8 @@ class AnimalList:
         ),
     ]
 
-    def __get_animal_by_id(self, animal_id) -> Union[AnimalModel, HTTPException]:
+    def __get_animal_by_id(self,
+                           animal_id) -> Union[AnimalModel, HTTPException]:
         for animal in self.animal_list:
             if animal.id == animal_id:
                 return animal
